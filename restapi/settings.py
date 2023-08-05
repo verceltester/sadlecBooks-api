@@ -172,7 +172,7 @@ USE_TZ = True
 # Configures the staticfiles directory to serve
 # static files from /static/ on our deployment
 STATIC_ROOT = os.path.join(
-    BASE_DIR, 'staticfiles', 'static')
+    BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
