@@ -1,9 +1,19 @@
 {
-  "builds": [{
+  "builds": [
+      {
       "src": "restapi/wsgi.py",
       "use": "@vercel/python",    
       "config": { "maxLambdaSize": "30mb", "runtime": "python3.9" }
-  }],
+    },
+
+    {
+        "src": "build.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "staticfiles"
+        }
+      }
+],
   "routes": [
     {
         "src": "/static/(.*)",
