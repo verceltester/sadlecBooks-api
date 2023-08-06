@@ -11,6 +11,8 @@ class Books(models.Model):
     aurokart = models.CharField(max_length = 300, null=True, blank=True)
     otherinfo = models.TextField(max_length=100000, null=True, blank=True)
     
+    class Meta:
+        ordering = ['id']
 
     def __str__(self):
         return self.bookTitle
@@ -21,6 +23,9 @@ class Chapter(models.Model):
     chapText = models.TextField(max_length=100000, null=True, blank=True)
     Books = models.ForeignKey(Books, related_name='chap', on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['id']
    
 
     def __str__(self):
@@ -33,6 +38,9 @@ class Subhead1(models.Model):
     Chapter = models.ForeignKey(Chapter, related_name='sub1', on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['id']
+
     def __str__(self):
         return self.subhead1Titles
 
@@ -42,6 +50,9 @@ class Subhead2(models.Model):
     subhead2Text = models.TextField(max_length=100000, null=True, blank=True)
     Subhead1 = models.ForeignKey(Subhead1, related_name='sub2',on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['id']
 
     def __str__(self):
         return self.subhead2Titles
