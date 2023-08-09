@@ -222,7 +222,7 @@ PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 CORS_ALLOWED_ORIGINS = [
     # "http://localhost:5500",
     # "http://127.0.0.1:5500",
-   "https://sadlecbooks.vercel.app"
+   "https://sadlecbooks.vercel.app/"
 ]
 
 
