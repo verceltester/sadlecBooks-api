@@ -41,6 +41,7 @@ DEBUG = True
 ALLOWED_HOSTS=['*']
 
 #ALLOWED_HOSTS = ['.vercel.app']
+CORS_ALLOW_HEADERS = ['*']
 
 
 CORS_ORIGIN_ALLOW_ALL = True
