@@ -43,7 +43,7 @@ ALLOWED_HOSTS=['*']
 #ALLOWED_HOSTS = ['.vercel.app']
 
 
-#CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -223,11 +223,11 @@ SIMPLE_JWT = {
 
 PASSWORD_RESET_TIMEOUT=900          # 900 Sec = 15 Min
 
-CORS_ALLOWED_ORIGINS = [
+#CORS_ALLOWED_ORIGINS = [
     # "http://localhost:5500",
     # "http://127.0.0.1:5500",
-   "https://sadlecbooks.vercel.app/", 
-]
+  # "https://sadlecbooks.vercel.app/", 
+#]
 
 
 INTERNAL_IPS = [
