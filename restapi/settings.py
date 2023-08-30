@@ -117,14 +117,25 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'URL' : 'postgres://zpvlhakr:sFshgnvZgFgkzc-2B_y3uPv4k2cOjWh6@john.db.elephantsql.com/zpvlhakr',
+#         'NAME': 'zpvlhakr',
+#         'USER': 'zpvlhakr',
+#         'PASSWORD': 'sFshgnvZgFgkzc-2B_y3uPv4k2cOjWh6',
+#         'HOST': 'john.db.elephantsql.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'URL' : 'postgres://zpvlhakr:sFshgnvZgFgkzc-2B_y3uPv4k2cOjWh6@john.db.elephantsql.com/zpvlhakr',
-        'NAME': 'zpvlhakr',
-        'USER': 'zpvlhakr',
-        'PASSWORD': 'sFshgnvZgFgkzc-2B_y3uPv4k2cOjWh6',
-        'HOST': 'john.db.elephantsql.com',
+        'HOST': 'ep-shrill-fog-88827563.ap-southeast-1.postgres.vercel-storage.com',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': '0QkVArwTna7o',
         'PORT': '5432',
     }
 }
