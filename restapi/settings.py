@@ -129,6 +129,8 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 #     }
 # }
 
+# db change
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
