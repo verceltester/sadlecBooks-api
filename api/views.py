@@ -22,7 +22,7 @@ def book(request):
 
 @api_view(['GET'])
 def home(request):    
-    return Response("You are on home page, design as per your appetite. If you need some content from database, will send that")
+    return Response("You are on home page, design as per your appetite. If you need some content from this database, will send that")
 
 # @api_view(['GET'])
 # def home(request):    
