@@ -130,6 +130,7 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 # }
 
 # db change
+#testing github
 
 DATABASES = {
     'default': {
