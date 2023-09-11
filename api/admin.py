@@ -20,7 +20,7 @@ class sub2ixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 @admin.register(Books)
 class BookAdmin(bookixAdmin, admin.ModelAdmin):
-    list_display = ['id','bookTitle','bookAuthor', 'bookPrice', "aurokart"]
+    list_display = ['id','bookTitle','bookAuthor', 'imagelink','bookPrice', "aurokart"]
     ordering = ['id']
 
 

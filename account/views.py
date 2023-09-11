@@ -88,10 +88,12 @@ class SaveBookmark(APIView):
 
   def post(self, request, format=None):
     profileid  = request.data.get("profile")
-    urlFrontend = request.data.get("bookmarks").get("url")
+    # urlFrontend = request.data.get("bookmarks").get("url")
+    bookmarkContent = request.data.get("bookmarks").get("content")
     userid = request.user.id  
     if userid == int(profileid):
-      bk = Bookmarks.objects.filter(profile__id=profileid).values("bookmarks").filter(bookmarks__contains={"url": urlFrontend}).exists()
+      # bk = Bookmarks.objects.filter(profile__id=profileid).values("bookmarks").filter(bookmarks__contains={"url": urlFrontend}).exists()
+      bk = Bookmarks.objects.filter(profile__id=profileid).values("bookmarks").filter(bookmarks__contains={"content": bookmarkContent}).exists()
       if bk:
         return Response({'msg':"Bookmark already Saved No need to add again"}, status=status.HTTP_401_UNAUTHORIZED)        
       else:

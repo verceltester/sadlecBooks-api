@@ -8,6 +8,7 @@ class Books(models.Model):
     bookAuthor = models.CharField(max_length=200, null=True, blank=True)
     bookPrice = models.FloatField(null=True, blank=True)
     image = models.ImageField(default='defaultt.jpg', upload_to='book_pics')
+    imagelink = models.CharField(max_length = 300, null=True, blank=True)
     aurokart = models.CharField(max_length = 300, null=True, blank=True)
     otherinfo = models.TextField(max_length=100000, null=True, blank=True)
     
@@ -16,7 +17,6 @@ class Books(models.Model):
 
     def __str__(self):
         return self.bookTitle
-
 
 class Chapter(models.Model):
     chapTitle = models.CharField(max_length=200, null=True, blank=True )
