@@ -10,13 +10,13 @@ class BooklistSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = Books
-        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice" , "image" ]
+        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice" , "imagelink" ]
 
 class BookdetailSerializer(serializers.ModelSerializer):
    
     class Meta:
         model = Books
-        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice", "image" ,"otherinfo", "aurokart"]
+        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice", "imagelink" ,"otherinfo", "aurokart"]
 
 
 #serailizer for displaying toc of a perticular book
