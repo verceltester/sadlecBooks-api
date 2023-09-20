@@ -10,7 +10,7 @@ class Books(models.Model):
     image = models.ImageField(default='defaultt.jpg', upload_to='book_pics')
     imagelink = models.CharField(max_length = 300, null=True, blank=True)
     aurokart = models.CharField(max_length = 300, null=True, blank=True)
-    otherinfo = models.TextField(max_length=100000, null=True, blank=True)
+    otherinfo = models.TextField(max_length=150000, null=True, blank=True)
     
     class Meta:
         ordering = ['id']
@@ -20,7 +20,7 @@ class Books(models.Model):
 
 class Chapter(models.Model):
     chapTitle = models.CharField(max_length=200, null=True, blank=True )
-    chapText = models.TextField(max_length=100000, null=True, blank=True)
+    chapText = models.TextField(max_length=250000, null=True, blank=True)
     Books = models.ForeignKey(Books, related_name='chap', on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
 
@@ -34,7 +34,7 @@ class Chapter(models.Model):
 
 class Subhead1(models.Model):
     subhead1Titles = models.CharField(max_length=500, null=True, blank=True)
-    subhead1Text = models.TextField(max_length=100000, null=True, blank=True)
+    subhead1Text = models.TextField(max_length=250000, null=True, blank=True)
     Chapter = models.ForeignKey(Chapter, related_name='sub1', on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
 
@@ -47,7 +47,7 @@ class Subhead1(models.Model):
 
 class Subhead2(models.Model):
     subhead2Titles = models.CharField(max_length=500, null=True, blank=True)
-    subhead2Text = models.TextField(max_length=100000, null=True, blank=True)
+    subhead2Text = models.TextField(max_length=250000, null=True, blank=True)
     Subhead1 = models.ForeignKey(Subhead1, related_name='sub2',on_delete=models.CASCADE)
     hastext = models.BooleanField(default=True)
 
