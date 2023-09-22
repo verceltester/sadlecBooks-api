@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'account',
     'import_export',
+    'whitenoise.runserver_nostatic',
 
 
 ]
@@ -75,6 +76,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    ‘whitenoise.middleware.WhiteNoiseMiddleware’,
    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -190,15 +192,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 # Configures the staticfiles directory to serve
 # static files from /static/ on our deployment
 STATIC_ROOT = os.path.join(
-    BASE_DIR, 'staticfiles', 'static')
+    BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URLS = '/media/'
 
 
 # Default primary key field type
