@@ -4,6 +4,8 @@ from django.urls import path, include
 from api import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt import views as jwt_views
+from django.conf import settings # new
+from  django.conf.urls.static import static #new
 
 
 # router = DefaultRouter()
@@ -26,5 +28,8 @@ urlpatterns = [
     # path('book/<int:pk>/', views.bookdetail),
     # path('book/', views.booklist),
 
-    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
