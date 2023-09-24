@@ -27,7 +27,7 @@ class UserRegistrationView(APIView):
     serializer.is_valid(raise_exception=True)
     user = serializer.save()
     # token = get_tokens_for_user(user)
-    return Response({'msg':'Your Registration is Successful, Line em up nuts to butts.'}, status=status.HTTP_201_CREATED)
+    return Response({'msg':'Your Registration is Successful!'}, status=status.HTTP_201_CREATED)
 
 
 class UserLoginView(APIView):
@@ -41,9 +41,9 @@ class UserLoginView(APIView):
     if user is not None:
       token = get_tokens_for_user(user)
       profileid = Profile.objects.get(user=user).id
-      return Response({'token':token, 'msg':'Login Successfull, Line em up nuts to butts.', 'user':user.name, 'profileId':profileid},  status=status.HTTP_200_OK)
+      return Response({'token':token, 'msg':'Login Successfull!', 'user':user.name, 'profileId':profileid},  status=status.HTTP_200_OK)
     else:
-      return Response({'errors':{'non_field_errors':["Email or Password is not Valid, Line 'em up nuts to butts."]}}, status=status.HTTP_404_NOT_FOUND)
+      return Response({'errors':{'non_field_errors':["Email or Password is not Valid!"]}}, status=status.HTTP_404_NOT_FOUND)
 
 
 
@@ -55,19 +55,19 @@ def ageCal(birthday):
   age_in_years = difference.days // 365
 
   if age_in_years in range(1, 15):
-    comment = "You are Still young to be reading this"
+    comment = "Jai Sri Ma"
     # print(comment)
     return comment
   elif age_in_years in range(16, 25):
-    comment = "This guy fucks"
+    comment = "Jai Sri Ma"
     # print(comment)
     return comment
   elif age_in_years in range(26, 35):
-    comment = "You ass is getting old nigger!"
+    comment = "Jai Sri Ma!"
     # print(comment)
     return comment
   elif age_in_years > 35:
-    comment = "Old hag! You ass is Already halfway to grave"
+    comment = "Jai Sri Ma"
     # print(comment)
     return comment
     
@@ -100,7 +100,7 @@ class SaveBookmark(APIView):
         serializer = SaveBookmarkSerializer(data=request.data)    
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response({'msg':"Bookmark Saved Successfully, Line 'em up nuts to butts."}, status=status.HTTP_201_CREATED)
+        return Response({'msg':"Bookmark Saved Successfully!"}, status=status.HTTP_201_CREATED)
     else:
       return Response({'msg':"Not allowed for you nigga."}, status=status.HTTP_401_UNAUTHORIZED)
     
@@ -118,10 +118,10 @@ class SaveBookmark(APIView):
       if bookmarkId in mylist:      
         bookmarkToDel = Bookmarks.objects.get(id=bookmarkId)
         bookmarkToDel.delete()   
-        return Response({'msg':"Bookmark del Successfully, Line 'em up nuts to butts."}, status=status.HTTP_200_OK)
+        return Response({'msg':"Bookmark deleted Successfully!"}, status=status.HTTP_200_OK)
       else:
-        return Response({'msg':"Not allowed for you nigga."}, status=status.HTTP_401_UNAUTHORIZED)
-    return Response({'msg':"Not allowed for you nigga."}, status=status.HTTP_401_UNAUTHORIZED)
+        return Response({'msg':"Not allowed for you!"}, status=status.HTTP_401_UNAUTHORIZED)
+    return Response({'msg':"Not allowed for you!"}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class ProfilePicUpdate(APIView):
@@ -139,9 +139,9 @@ class ProfilePicUpdate(APIView):
       serializer = ProfilePicUpdateSerializer(profieToUpdate, data=request.data,  partial=True, context={'user':request.user})
       serializer.is_valid(raise_exception=True)    
       serializer.save()
-      return Response({'msg':"profile pic Saved Successfully, Line 'em up nuts to butts."}, status=status.HTTP_200_OK)
+      return Response({'msg':"profile pic Saved Successfully!"}, status=status.HTTP_200_OK)
     else:
-      return Response({'msg':"Not allowed for you nigga."}, status=status.HTTP_401_UNAUTHORIZED)
+      return Response({'msg':"Not allowed for you!"}, status=status.HTTP_401_UNAUTHORIZED)
       
 
 
@@ -151,7 +151,7 @@ class UserChangePasswordView(APIView):
   def post(self, request, format=None):
     serializer = UserChangePasswordSerializer(data=request.data, context={'user':request.user.id})
     serializer.is_valid(raise_exception=True)
-    return Response({'msg':"Password Changed Successfully, Line 'em up nuts to butts."}, status=status.HTTP_200_OK)
+    return Response({'msg':"Password Changed Successfully!"}, status=status.HTTP_200_OK)
 
 
 class SendPasswordResetEmailView(APIView):
