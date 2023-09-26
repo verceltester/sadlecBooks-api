@@ -22,21 +22,30 @@ class sub2ixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class BookAdmin(bookixAdmin, admin.ModelAdmin):
     list_display = ['id','bookTitle','bookAuthor', 'imagelink','bookPrice', "aurokart"]
     ordering = ['id']
-
+    search_fields = Books.searchableFields
+    search_fields = ["bookTitle"]
 
 @admin.register(Chapter)
 class ChapterAdmin(chapixAdmin, admin.ModelAdmin):
     list_display = ['id','chapTitle', 'Books', 'hastext']
     ordering = ['id']
-
+    list_filter = Chapter.FilterFields
+    search_fields = Chapter.searchableFields
+    raw_id_fields = ["Chapter"]
 
 @admin.register(Subhead1)
 class Subhead1Admin(sub1ixAdmin, admin.ModelAdmin):
     list_display = ['id','subhead1Titles', 'Chapter', 'hastext']
     ordering = ['id']
-
+    search_fields = Subhead1.searchableFields
+    list_filter = Subhead1.FilterFields
+    raw_id_fields = ["Subhead1"]
 
 @admin.register(Subhead2)
 class Subhead2Admin(sub2ixAdmin, admin.ModelAdmin):
     list_display = ['id','subhead2Titles', 'Subhead1', 'hastext']
     ordering = ['id']
+    search_fields = Subhead2.searchableFields
+    list_filter = Subhead2.FilterFields
+    raw_id_fields = ["Subhead2"]
+
