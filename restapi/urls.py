@@ -1,4 +1,3 @@
-
 from django.contrib import admin 
 from django.urls import path, include
 from api import views
@@ -15,6 +14,12 @@ from  django.conf.urls.static import static #new
 # router.register('Subhead1', views.Subhead1ViewSet, basename='Subhead1')
 
 
+admin.site.site_header = 'SadlecBooks Administration'
+admin.site.site_title = 'SadlecBooks admin'
+admin.site.index_title = 'SadlecBooks Admin Area'
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include(router.urls)),
@@ -23,7 +28,7 @@ urlpatterns = [
     path('', include('api.urls')),
     # path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-       
+
    
     # path('book/<int:pk>/', views.bookdetail),
     # path('book/', views.booklist),
