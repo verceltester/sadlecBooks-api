@@ -1,8 +1,6 @@
+                                                                         
 from rest_framework import serializers
 from .models import *
-
-
-
 
 # seraliezer for displaying booklist
 
@@ -23,14 +21,13 @@ class BookdetailSerializer(serializers.ModelSerializer):
 class Subhead2Serializer(serializers.ModelSerializer):
     class Meta:
         model = Subhead2
-        fields = ["id", "subhead2Titles"]
-
+        fields = ["id", "subhead2Titles", "hastext"]
 
 class Subhead1Serializer(serializers.ModelSerializer):
     sub2 = Subhead2Serializer(many=True)
     class Meta:
         model = Subhead1
-        fields = ["id", "subhead1Titles","sub2"]         
+        fields = ["id", "subhead1Titles","sub2", "hastext"]         
 
 
 class ChapterSerializer(serializers.ModelSerializer):
@@ -38,7 +35,7 @@ class ChapterSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Chapter
-        fields = ["id", "chapTitle", "sub1"]  
+        fields = ["id", "chapTitle", "hastext", "sub1"]  
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -48,9 +45,6 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Books
         fields = [ "id", "bookTitle", "chap"]
-    
-        
-
 
 
 
@@ -76,14 +70,10 @@ class ChapterTextSerializer(serializers.ModelSerializer):
             return self.context["currentBook"]
         return None
     
-    
-
-    
-
-    
     class Meta: 
         model = Chapter
         fields = ["id", "currentBook","chapTitle", "chapText", "hastext", "nextUrl", "previousUrl"]  
+
 
 
 class Subhead1TextSerializer(serializers.ModelSerializer):
@@ -107,11 +97,11 @@ class Subhead1TextSerializer(serializers.ModelSerializer):
         if "previousUrl" in self.context:
             return self.context["previousUrl"]        
         return None
-    
+
     class Meta:
         model = Subhead1
         fields = ["id", "currentBook", "Chapter", "subhead1Titles","subhead1Text" , "hastext", "nextUrl", "previousUrl"]
-      
+
     
 class Subhead2TextSerializer(serializers.ModelSerializer):
     Subhead1 = serializers.StringRelatedField()    
@@ -122,14 +112,15 @@ class Subhead2TextSerializer(serializers.ModelSerializer):
 
     def get_currentBook(self, obj):
         if "currentBook" in self.context:
-            return self.context["currentBook"]                
+            return self.context["currentBook"]
         return None
     
     def get_currentChapter(self, obj):
         if "currentChapter" in self.context:
             return self.context["currentChapter"]        
         return None
-    
+
+
     def get_nextUrl(self, obj):
         if "nextUrl" in self.context:
             return self.context["nextUrl"]        
