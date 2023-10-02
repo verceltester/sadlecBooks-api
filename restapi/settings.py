@@ -225,8 +225,7 @@ if not DEBUG:
         )
 
 
-STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'staticfiles', 'static')
-
-]
+#STATICFILES_DIRS = [
+  #      os.path.join(BASE_DIR, 'staticfiles', 'static')
+#]
 
