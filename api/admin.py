@@ -31,7 +31,7 @@ class ChapterAdmin(chapixAdmin, admin.ModelAdmin):
     ordering = ['id']
     list_filter = Chapter.FilterFields
     search_fields = Chapter.searchableFields
-    raw_id_fields = ["Chapter"]
+   
 
 @admin.register(Subhead1)
 class Subhead1Admin(sub1ixAdmin, admin.ModelAdmin):
@@ -39,7 +39,7 @@ class Subhead1Admin(sub1ixAdmin, admin.ModelAdmin):
     ordering = ['id']
     search_fields = Subhead1.searchableFields
     list_filter = Subhead1.FilterFields
-    raw_id_fields = ["Subhead1"]
+
 
 @admin.register(Subhead2)
 class Subhead2Admin(sub2ixAdmin, admin.ModelAdmin):
@@ -47,5 +47,5 @@ class Subhead2Admin(sub2ixAdmin, admin.ModelAdmin):
     ordering = ['id']
     search_fields = Subhead2.searchableFields
     list_filter = Subhead2.FilterFields
-    raw_id_fields = ["Subhead2"]
+  
 
