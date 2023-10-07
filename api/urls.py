@@ -11,10 +11,12 @@ from django.conf.urls.static import static
 app_name = 'api'
 
 urlpatterns = [
-    # path('', views.book),
-       
+    # path('', views.book),      
      
-    
+    path('api/indexpage/<int:bookid>/', views.indexwordlist, name="indexword"),
+    path('api/indexurl/<int:wordid>/', views.indexwordurl, name="indexurl"),
+    # path('api/indexurl/<str:word>/', views.indexwordurl, name="indexurl"),
+
     path('api/book/<int:bookid>/<int:chapid>/<int:sub1id>/<int:sub2id>/', views.Subhead2Text),
     path('api/book/<int:bookid>/<int:chapid>/<int:sub1id>/', views.Subhead1Text),
     path('api/book/<int:bookid>/<int:chapid>/', views.ChapterText),

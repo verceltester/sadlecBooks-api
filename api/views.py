@@ -4,12 +4,38 @@ from .serializers import *
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.generics import ListAPIView
+# from rest_framework.generics import ListAPIView
 from rest_framework.reverse import reverse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions
 from rest_framework import response, decorators, permissions, status
 
+
+
+@api_view(['GET'])
+def indexwordlist(request, bookid):    
+    iwords = indexword.objects.filter(bookID__id=bookid).all()  
+    # print(iwords)  
+    myserializer = indexWordSerializer(iwords, many=True, context={'request': request})
+    return Response(myserializer.data)
+
+
+# @api_view(['GET'])
+# def indexwordurl(request, word):    
+#     wordurl = indexUrl.objects.filter(word=word)
+#     # inword = indexword.objects.get(id=wordid).word
+#     print(wordurl)    
+#     myserializer = indexwordurlSerializer(wordurl, many=True, context={'request': request, 'wordname': word, })
+#     return Response(myserializer.data)
+   
+@api_view(['GET'])
+def indexwordurl(request, wordid):    
+    wordurl = indexUrl.objects.filter(word_id=wordid)
+    inword = indexword.objects.get(id=wordid).word
+    # print(type(inword))    
+    myserializer = indexwordurlSerializer(wordurl, many=True, context={'request': request, 'wordname':inword, })
+    return Response(myserializer.data)
+    # return Response("hi")
 
 
 @api_view(['GET'])
@@ -22,7 +48,7 @@ def book(request):
 
 @api_view(['GET'])
 def home(request):    
-    return Response("You are on home page, design as per your appetite. If you need some content from this database, will send that")
+    return Response("You are on home page, design as per your appetite. ")
 
 # @api_view(['GET'])
 # def home(request):    

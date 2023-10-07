@@ -63,3 +63,26 @@ class Subhead2(models.Model):
 
     def __str__(self):
         return self.subhead2Titles
+
+
+
+class indexword(models.Model):    
+    
+    alphaTitle  = models.CharField(max_length=1, blank=True)
+    word = models.CharField(max_length=100, null=True, blank=True)
+    bookID = models.ForeignKey(Books, on_delete=models.CASCADE)
+    searchableFields = ["word"]
+    FilterFields = ["bookID"]
+
+    def __str__(self):
+        return self.word
+    
+
+class indexUrl(models.Model):
+    word = models.ForeignKey(indexword, on_delete=models.CASCADE)
+    url = models.CharField(max_length=100, null=True, blank=True)
+    urltext = models.CharField(max_length=100, null=True, blank=True)    
+    searchableFields = ["url"]
+    
+    def __str__(self):
+        return  self.url

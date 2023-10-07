@@ -2,6 +2,30 @@
 from rest_framework import serializers
 from .models import *
 
+
+class indexWordSerializer(serializers.ModelSerializer):   
+    class Meta:
+        model = indexword
+        fields = [ "id", "word", "alphaTitle"]
+
+
+class indexwordurlSerializer(serializers.ModelSerializer):
+
+    wordname = serializers.SerializerMethodField()
+
+    def get_wordname(self, obj):
+            if "wordname" in self.context:
+                return self.context["wordname"]        
+            return None
+
+    class Meta:
+        model = indexUrl
+        # fields = "__all__"
+        fields = [ "urltext", "url", "wordname"]
+
+        
+
+
 # seraliezer for displaying booklist
 
 class BooklistSerializer(serializers.ModelSerializer):

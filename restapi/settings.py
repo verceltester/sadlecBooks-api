@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS=['*']
 
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -89,27 +89,30 @@ TEMPLATES = [
 WSGI_APPLICATION = 'restapi.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'sadlecdbnew',
+#         'USER': 'sadlecadmin',
+#         'PASSWORD': '1sadlec-admin',
+#         'HOST': 'sadlecdbnew.cl3ihspuabuk.ap-south-1.rds.amazonaws.com',
+#         'PORT': '5432',
 #     }
 # }
-
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sadlecBooks',
-        'USER': 'sadlecadmin',
-        'PASSWORD': '',
-        'HOST': 'sadlecbooks.cqkyupmpyifi.ap-south-1.rds.amazonaws.com',
+        'NAME': 'db_postgres', 
+        'USER': 'postgres',
+        'PASSWORD': 'killer',
+        'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
 }
+
+
 
 # JWT Configuration
 REST_FRAMEWORK = {
@@ -225,7 +228,7 @@ if not DEBUG:
         )
 
 
-#STATICFILES_DIRS = [
-  #      os.path.join(BASE_DIR, 'staticfiles', 'static')
-#]
+# STATICFILES_DIRS = [
+#        os.path.join(BASE_DIR, 'staticfiles', 'static')
+# ]
 

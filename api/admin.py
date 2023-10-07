@@ -16,7 +16,24 @@ class sub1ixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
 class sub2ixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
+class indexWordixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+class indexUrlixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
 
+@admin.register(indexword)
+class indexWordAdmin(indexWordixAdmin, admin.ModelAdmin):
+    list_display = ['id','word','bookID', 'alphaTitle']
+    ordering = ['id']
+    search_fields = indexword.searchableFields
+    # search_fields = ["word"]
+
+@admin.register(indexUrl)
+class indexUrlAdmin(indexUrlixAdmin, admin.ModelAdmin):
+    list_display = ['id','word', 'url','urltext']
+    ordering = ['id']
+    search_fields = indexUrl.searchableFields
+    # search_fields = ["url"]
 
 @admin.register(Books)
 class BookAdmin(bookixAdmin, admin.ModelAdmin):
