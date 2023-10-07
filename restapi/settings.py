@@ -90,30 +90,6 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'sadlecdbnew',
-#         'USER': 'sadlecadmin',
-#         'PASSWORD': '1sadlec-admin',
-#         'HOST': 'sadlecdbnew.cl3ihspuabuk.ap-south-1.rds.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_postgres', 
-        'USER': 'postgres',
-        'PASSWORD': 'killer',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
-    }
-}
-
-
-
 # JWT Configuration
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
