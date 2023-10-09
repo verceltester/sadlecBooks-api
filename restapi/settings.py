@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'account',
     'import_export',
+    'django_filters',
     'whitenoise.runserver_nostatic',
 
 
@@ -88,6 +89,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'restapi.wsgi.application'
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_postgres', 
+        'USER': 'postgres',
+        'PASSWORD': 'killer',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
+    }
+}
 
 
 # JWT Configuration
@@ -208,3 +220,6 @@ if not DEBUG:
 #        os.path.join(BASE_DIR, 'staticfiles', 'static')
 # ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
