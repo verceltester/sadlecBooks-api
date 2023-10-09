@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS=['*']
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'account',
     'import_export',
+    'django_filters',
     'whitenoise.runserver_nostatic',
 
 
@@ -93,24 +94,17 @@ WSGI_APPLICATION = 'restapi.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'sadlecdbnew',
-#         'USER': 'sadlecadmin',
-#         'PASSWORD': '1sadlec-admin',
-#         'HOST': 'sadlecdbnew.cl3ihspuabuk.ap-south-1.rds.amazonaws.com',
+#         'NAME': 'db_postgres', 
+#         'USER': 'postgres',
+#         'PASSWORD': 'killer',
+#         'HOST': '127.0.0.1', 
 #         'PORT': '5432',
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_postgres', 
-        'USER': 'postgres',
-        'PASSWORD': 'killer',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
-    }
-}
+
+# 
+
 
 
 
@@ -232,3 +226,6 @@ if not DEBUG:
 #        os.path.join(BASE_DIR, 'staticfiles', 'static')
 # ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

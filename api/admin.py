@@ -7,6 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 # admin.site.register(Chapter)
 # admin.site.register(Subhead1)
 # admin.site.register(Subhead2)
+# admin.site.register(Catagory)
 
 class bookixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
@@ -20,6 +21,15 @@ class indexWordixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
 class indexUrlixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ...
+class catagoryixAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    ...
+
+@admin.register(Catagory)
+class catagoryAdmin(catagoryixAdmin, admin.ModelAdmin):
+    list_display = ['id','catagory']
+    ordering = ['id']
+    search_fields = [Catagory]
+    
 
 @admin.register(indexword)
 class indexWordAdmin(indexWordixAdmin, admin.ModelAdmin):
@@ -39,6 +49,7 @@ class indexUrlAdmin(indexUrlixAdmin, admin.ModelAdmin):
 class BookAdmin(bookixAdmin, admin.ModelAdmin):
     list_display = ['id','bookTitle','bookAuthor', 'imagelink','bookPrice', "aurokart"]
     ordering = ['id']
+    list_filter = Books.FilterFields
     search_fields = Books.searchableFields
     search_fields = ["bookTitle"]
 

@@ -4,21 +4,21 @@ from .serializers import *
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
-# from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework.reverse import reverse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions
 from rest_framework import response, decorators, permissions, status
+from rest_framework.filters import SearchFilter
 
-
+from  django_filters.rest_framework import DjangoFilterBackend
 
 @api_view(['GET'])
 def indexwordlist(request, bookid):    
     iwords = indexword.objects.filter(bookID__id=bookid).all()  
-    # print(iwords)  
-    myserializer = indexWordSerializer(iwords, many=True, context={'request': request})
+    bookname = Books.objects.get(id=bookid).bookTitle
+    myserializer = indexWordSerializer(iwords, many=True, context={'request': request, 'bookname':bookname, })
     return Response(myserializer.data)
-
 
 # @api_view(['GET'])
 # def indexwordurl(request, word):    
@@ -38,12 +38,24 @@ def indexwordurl(request, wordid):
     # return Response("hi")
 
 
-@api_view(['GET'])
-def book(request):
-    books = Books.objects.all()
-    myserializer = BooklistSerializer(
-        books, many=True, context={'request': request})
-    return Response(myserializer.data)
+# @api_view(['GET'])
+# def book(request):
+#     books = Books.objects.all()
+#     filter_backends = [DjangoFilterBackend]
+#     filter_backends = [SearchFilter]    
+#     filterset_fields = ['bookTitle', 'bookAuthor','bookPrice']
+#     search_fields = ['bookTitle', 'bookAuthor','bookPrice']
+#     myserializer = BooklistSerializer(books, many=True, context={'request': request})
+#     return Response(myserializer.data)
+    
+class book(ListAPIView):
+    queryset=Books.objects.all()
+    serializer_class = BooklistSerializer
+    # filter_backends = [SearchFilter]
+    # search_fields = ['bookTitle', 'bookAuthor','bookPrice']
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['bookTitle', 'bookAuthor','bookPrice', 'catagory']
+    
 
 
 @api_view(['GET'])

@@ -22,7 +22,9 @@ urlpatterns = [
     path('api/book/<int:bookid>/<int:chapid>/', views.ChapterText),
     path('api/book/<int:bookid>/toc/', views.booktoc, name="book-toc"),
     path('api/book/<int:bookid>/', views.bookdetails, name="book-detail"),
-    path('api/book/', views.book, name="book-list"),
+    path('api/book/', views.book.as_view(), name="book-list"),
+    # path('api/book/', views.book, name="book-list"),
+    
     path('', views.home, name="home"),
    
 ]

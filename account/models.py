@@ -101,6 +101,9 @@ class Profile(models.Model):
 class Bookmarks(models.Model):    
     bookmarks = models.JSONField(blank=True)    
     profile = models.ForeignKey(Profile, related_name= "mybookmark", on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-id']
     
     
     def __str__(self):

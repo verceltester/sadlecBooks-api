@@ -3,10 +3,17 @@ from rest_framework import serializers
 from .models import *
 
 
-class indexWordSerializer(serializers.ModelSerializer):   
+class indexWordSerializer(serializers.ModelSerializer): 
+    bookname =   serializers.SerializerMethodField()
+
+    def get_bookname(self, obj):
+            if "bookname" in self.context:
+                return self.context["bookname"]        
+            return None
+    
     class Meta:
         model = indexword
-        fields = [ "id", "word", "alphaTitle"]
+        fields = [ "id", "word", "alphaTitle", "bookname"]
 
 
 class indexwordurlSerializer(serializers.ModelSerializer):
@@ -29,10 +36,12 @@ class indexwordurlSerializer(serializers.ModelSerializer):
 # seraliezer for displaying booklist
 
 class BooklistSerializer(serializers.ModelSerializer):
+    catagory = serializers.StringRelatedField(many=True)
    
     class Meta:
         model = Books
-        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice" , "imagelink" ]
+        fields = [ "id", "bookTitle", "bookAuthor", "bookPrice" ,  "catagory", "imagelink" ]
+
 
 class BookdetailSerializer(serializers.ModelSerializer):
    
